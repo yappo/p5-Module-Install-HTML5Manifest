@@ -75,6 +75,12 @@ Module::Install::HTML5Manifest - HTML5 application cache manifest file generator
 
   WriteAll;
 
+  # in your html5manifest.skip
+  \.txt$
+  tmp/
+
+run shell commands
+
   $ perl Makefile.PL
   $ make html5manifest
   $ cat example.manifest
