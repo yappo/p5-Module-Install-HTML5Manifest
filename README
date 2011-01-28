@@ -20,6 +20,12 @@ SYNOPSIS
 
       WriteAll;
 
+      # in your html5manifest.skip
+      \.txt$
+      tmp/
+
+    run shell commands
+
       $ perl Makefile.PL
       $ make html5manifest
       $ cat example.manifest
