@@ -1,20 +1,41 @@
 # NAME
 
-Module::Install::HTML5Manifest -
+Module::Install::HTML5Manifest - HTML5 application cache manifest file generator for Module::Install
 
 # SYNOPSIS
 
   use Module::Install::HTML5Manifest;
 
+  # in your Makefile.PL
+  use inc::Module::Install;
+  name 'Example';
+  all_from 'lib/Example.pm';
+
+  html5_manifest
+      htdocs_from   => 'htdocs',
+      manifest_skip => 'html5manifest.skip',
+      generate_to   => 'example.manifest',
+      network_list  => [qw( /api /foo/bar.cgi )],
+      use_digest    => 1,
+      ;
+
+  WriteAll;
+
+  $ perl Makefile.PL
+  $ make html5manifest
+  $ cat example.manifest
+
 # DESCRIPTION
 
-Module::Install::HTML5Manifest is
+Module::Install::HTML5Manifest is generate HTML5 application cache manifest file.
 
 # AUTHOR
 
 Kazuhiro Osawa <yappo {at} shibuya {dot} pl>
 
 # SEE ALSO
+
+[HTML5::Manifest](http://search.cpan.org/perldoc?HTML5::Manifest), [http://www.w3.org/TR/html5/offline.html](http://www.w3.org/TR/html5/offline.html)
 
 # LICENSE
 

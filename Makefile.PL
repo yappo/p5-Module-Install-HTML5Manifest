@@ -5,7 +5,10 @@ readme_from 'lib/Module/Install/HTML5Manifest.pm';
 readme_markdown_from 'lib/Module/Install/HTML5Manifest.pm';
 githubmeta;
 
-# requires '';
+requires 'Data::Dumper';
+requires 'HTML5::Manifest';
+requires 'MIME::Base64';
+requires 'Module::Install';
 
 tests 't/*.t';
 author_tests 'xt';
