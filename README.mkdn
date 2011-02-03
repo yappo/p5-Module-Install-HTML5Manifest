@@ -4,32 +4,38 @@ Module::Install::HTML5Manifest - HTML5 application cache manifest file generator
 
 # SYNOPSIS
 
-  use Module::Install::HTML5Manifest;
+## simple usage
 
-  # in your Makefile.PL
-  use inc::Module::Install;
-  name 'Example';
-  all_from 'lib/Example.pm';
+in your Makefile.PL
 
-  html5_manifest
-      htdocs_from   => 'htdocs',
-      manifest_skip => 'html5manifest.skip',
-      generate_to   => 'example.manifest',
-      network_list  => [qw( /api /foo/bar.cgi )],
-      use_digest    => 1,
-      ;
+    use Module::Install::HTML5Manifest;
+    
 
-  WriteAll;
+    use inc::Module::Install;
+    name 'Example';
+    all_from 'lib/Example.pm';
 
-  # in your html5manifest.skip
-  \.txt$
-  tmp/
+    html5_manifest
+        htdocs_from   => 'htdocs',
+        manifest_skip => 'html5manifest.skip',
+        generate_to   => 'example.manifest',
+        network_list  => [qw( /api /foo/bar.cgi )],
+        use_digest    => 1,
+        ;
+    
+
+    WriteAll;
+
+in your html5manifest.skip
+
+    \.txt$
+    tmp/
 
 run shell commands
 
-  $ perl Makefile.PL
-  $ make html5manifest
-  $ cat example.manifest
+    $ perl Makefile.PL
+    $ make html5manifest
+    $ cat example.manifest
 
 # DESCRIPTION
 

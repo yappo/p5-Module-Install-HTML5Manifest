@@ -3,32 +3,35 @@ NAME
     generator for Module::Install
 
 SYNOPSIS
-      use Module::Install::HTML5Manifest;
+  simple usage
+    in your Makefile.PL
 
-      # in your Makefile.PL
-      use inc::Module::Install;
-      name 'Example';
-      all_from 'lib/Example.pm';
+        use Module::Install::HTML5Manifest;
+    
+        use inc::Module::Install;
+        name 'Example';
+        all_from 'lib/Example.pm';
 
-      html5_manifest
-          htdocs_from   => 'htdocs',
-          manifest_skip => 'html5manifest.skip',
-          generate_to   => 'example.manifest',
-          network_list  => [qw( /api /foo/bar.cgi )],
-          use_digest    => 1,
-          ;
+        html5_manifest
+            htdocs_from   => 'htdocs',
+            manifest_skip => 'html5manifest.skip',
+            generate_to   => 'example.manifest',
+            network_list  => [qw( /api /foo/bar.cgi )],
+            use_digest    => 1,
+            ;
+    
+        WriteAll;
 
-      WriteAll;
+    in your html5manifest.skip
 
-      # in your html5manifest.skip
-      \.txt$
-      tmp/
+        \.txt$
+        tmp/
 
     run shell commands
 
-      $ perl Makefile.PL
-      $ make html5manifest
-      $ cat example.manifest
+        $ perl Makefile.PL
+        $ make html5manifest
+        $ cat example.manifest
 
 DESCRIPTION
     Module::Install::HTML5Manifest is generate HTML5 application cache
