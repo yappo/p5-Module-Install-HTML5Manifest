@@ -1,12 +1,16 @@
 use strict;
 use warnings;
 use Test::More;
+use Capture::Tiny 'capture';
 use File::Spec;
 
 my $example = File::Spec->catfile('t', 'Example');
 chdir $example;
-`$^X Makefile.PL`;
-`make html5manifest`;
+
+capture {
+    system $^X, 'Makefile.PL';
+    system 'make', 'html5manifest';
+};
 
 my $manifest = do {
     open my $fh, '<', 'example.manifest' or die "Can'ot open file example.manifest: $!";
@@ -28,6 +32,8 @@ CACHE:
 # digest: KC22SJMksgNahFOXL97t7w
 MANIFEST
 
-`make distclean`;
+capture {
+    system 'make', 'distclean';
+};
 
 done_testing;

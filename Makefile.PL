@@ -13,6 +13,8 @@ requires 'Module::Install';
 tests 't/*.t';
 author_tests 'xt';
 
+build_requires 'Capture::Tiny';
+build_requires 'Digest::MD5';
 build_requires 'Test::More';
 auto_set_repository;
 auto_include;
