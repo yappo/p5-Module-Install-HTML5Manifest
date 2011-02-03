@@ -17,12 +17,14 @@ sub html5_manifest {
         $@ and die 'you should install IO::Compress::Gzip';
     }
 
+    my $make_target = delete $args{make_target} || 'html5manifest';
+
     local $Data::Dumper::Indent = 0;
     my $base64 = encode_base64( Dumper( \%args ) );
     $base64 =~ s/[\r\n]//g;
 
     $self->Makefile->postamble(<<EOM);
-html5manifest:
+$make_target:
 \techo "ok"
 \tperl -Mlib=inc -MModule::Install::HTML5Manifest -e 'Module::Install::HTML5Manifest->generate("$base64")'
 EOM
