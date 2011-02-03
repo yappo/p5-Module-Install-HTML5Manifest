@@ -12,6 +12,11 @@ sub html5_manifest {
     my($self, %args) = @_;
     $self->admin->copy_package('HTML5::Manifest', $INC{'HTML5/Manifest.pm'});
 
+    if ($args{with_gzfile}) {
+        eval "require IO::Compress::Gzip";
+        $@ and die 'you should install IO::Compress::Gzip';
+    }
+
     local $Data::Dumper::Indent = 0;
     my $base64 = encode_base64( Dumper( \%args ) );
     $base64 =~ s/[\r\n]//g;
@@ -47,6 +52,13 @@ sub generate {
 
     open my $to_fh, '>', $generate_to or die "Can't open file $generate_to: $!";
     print $to_fh $manifest->generate;
+    close $to_fh;
+
+    if ($args->{with_gzfile}) {
+        require IO::Compress::Gzip;
+        IO::Compress::Gzip::gzip($generate_to => "$generate_to.gz")
+            or die "gzip failed: $IO::Compress::Gzip::GzipError\n";
+    }
 }
 
 1;
@@ -72,6 +84,7 @@ in your Makefile.PL
         htdocs_from   => 'htdocs',
         manifest_skip => 'html5manifest.skip',
         generate_to   => 'example.manifest',
+        with_gzfile   => 1, # create .gz file
         network_list  => [qw( /api /foo/bar.cgi )],
         use_digest    => 1,
         ;

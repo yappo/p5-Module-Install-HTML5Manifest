@@ -1,5 +1,4 @@
 cover_db
-MYMETA.yml
 META.yml
 Makefile
 blib
@@ -10,5 +9,3 @@ Makefile.old
 nytprof.out
 MANIFEST.bak
 *.sw[po]
-*.manifest
-*.manifest.gz

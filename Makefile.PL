@@ -14,6 +14,8 @@ tests 't/*.t';
 author_tests 'xt';
 
 build_requires 'Capture::Tiny';
+build_requires 'IO::Compress::Gzip'; # for t/02_gz.t
+build_requires 'IO::Uncompress::Gunzip'; # for t/02_gz.t
 build_requires 'Digest::MD5';
 build_requires 'Test::More';
 auto_set_repository;
