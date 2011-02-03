@@ -22,8 +22,10 @@ NETWORK:
 /foo/bar.cgi
 
 CACHE:
-/site.css # gJ3zRAFSFdM1CkHh+6NmKw
-/site.js # UM9XLY422f6yb7XbiXe2Jw
+/site.css
+/site.js
+
+# digest: KC22SJMksgNahFOXL97t7w
 MANIFEST
 
 `make distclean`;
