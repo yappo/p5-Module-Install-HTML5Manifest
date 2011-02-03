@@ -13,7 +13,7 @@ sub html5_manifest {
     $self->admin->copy_package('HTML5::Manifest', $INC{'HTML5/Manifest.pm'});
 
     if ($args{with_gzfile}) {
-        eval "require IO::Compress::Gzip";
+        eval "require IO::Compress::Gzip"; ## no critic
         $@ and die 'you should install IO::Compress::Gzip';
     }
 
