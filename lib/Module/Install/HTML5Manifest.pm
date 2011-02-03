@@ -37,10 +37,12 @@ sub generate {
     my $skipfile = delete $args->{manifest_skip};
     my $skip = [];
 
-    open my $fh, '<', $skipfile or die "Can't open file $skipfile: $!";
-    while (<$fh>) {
-        chomp;
-        push @{ $skip }, qr{$_};
+    if ($skipfile && -f $skipfile) {
+        open my $fh, '<', $skipfile or die "Can't open file $skipfile: $!";
+        while (<$fh>) {
+            chomp;
+            push @{ $skip }, qr{$_};
+        }
     }
 
     my $generate_to = delete $args->{generate_to};
