@@ -8,3 +8,5 @@ __DATA__
 Kazuhiro Osawa
 yappo {at} shibuya {dot} pl
 Module::Install::HTML5Manifest
+html
+
